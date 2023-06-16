@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Your Cart</h1>
+
+{% if cart %}
+
+{% for product in cart %}
+<!-- Now use product variable directly -->
+<div class="container text-center">
+    <div class="row">
+        <div class="col-3">
+            <div>
+                <h2>{{ product.name }}</h2>
+                <p>Price: {{ product.price }}</p>
+                <p>Quantity: {{ product.quantity }}</p>
+            </div>
+        </div>
+        <div class="col-1">
+            <form action="{{ url_for('reduce_quantity', product_id=product.product_id) }}" method="post">
+                <input style="max-width: 25px; max-height: 50px;" type="image"
+                    src="{{ url_for('static', filename='images/subtract.png') }}" alt="Reduce Quantity" />
+            </form>
+        </div>
+        <div class="col-1">
+            <a href="{{ url_for('add_to_cart', product_id=product.product_id) }}">
+                <img style="max-width: 25px; max-height: 50px;"
+                    src="{{ url_for('static', filename='images/plus.png') }}" alt="Increase Quantity">
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+
+{% endfor %}
+<p><strong>Total Price: ${{ total_price }}</strong></p>
+
+<a href="{{ url_for('checkout') }}">Checkout</a>
+{% else %}
+<p>Your cart is empty.</p>
+{% endif %}
+{% endblock %}
