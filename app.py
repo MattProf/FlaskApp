@@ -1,11 +1,17 @@
+import os
 from flask import Flask, render_template, request, redirect, session, url_for
 from pymongo import MongoClient
 import uuid
+from dotenv import load_dotenv
 
+load_dotenv()
+user = os.getenv("DB_USER")
+passw = os.getenv("DB_PASS")
 # Connect to your MongoDB database
 client = MongoClient(
-    "mongodb+srv://muhlenkortmatthew:NpEe0q7mNCEkbAh8@clusterprofile.v0bdrot.mongodb.net/"
+    f"mongodb+srv://{user}:{passw}@clusterprofile.v0bdrot.mongodb.net/"
 )
+
 db = client["product_database"]  # Use your own database name
 collection = db["products"]  # Use your own collection name
 
@@ -238,6 +244,23 @@ def thank_you():
     del session["shipping"]
 
     return render_template("thank_you.html")
+
+
+@app.route("/sitemap", methods=["GET"])
+def sitemap():
+    directory = os.path.abspath("./templates")
+    html_files = []
+    for subdir, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith(".html"):
+                file_path = os.path.join(subdir, file)
+                relative_path = os.path.relpath(file_path, directory)
+                relative_path = relative_path.replace("\\", "/")
+                html_files.append(relative_path)
+
+    urls = [f"http://127.0.0.1:5000/{os.path.splitext(html)[0]}" for html in html_files]
+
+    return render_template("sitemap.xml", urls=urls)
 
 
 if __name__ == "__main__":

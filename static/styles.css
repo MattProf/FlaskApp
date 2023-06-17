@@ -9,3 +9,18 @@ h1 {
 ul {
     list-style-type: none;
 }
+.custom-img-size {
+    width: 30px;
+    height: 30px;
+}
+
+.footer {
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    color: black;
+    text-align: center;
+    padding: 10px;
+}

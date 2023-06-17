@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>
+    How flask handles webpage security
+</h1>
+
+<p>
+    Creating security features to protect your web application from attacks like cross-site scripting (XSS) and SQL
+    injection is essential. Flask and its related libraries offer several built-in protections against these kinds of
+    attacks. Below are some of the ways to improve your web application security:
+</p>
+<h2>1. Prevent Cross-Site Scripting (XSS):</h2>
+<p>
+    Jinja2 templates escape special characters by default, which means they can’t be interpreted as HTML. This helps
+    prevent
+    XSS attacks. However, you should still be cautious with the `|safe` filter, which disables this automatic escaping.
+</p>
+<h2>2.Prevent Cross-Site Request Forgery (CSRF):</h2>
+Use Flask-WTF or Flask-SeaSurf to protect against CSRF attacks. These extensions add CSRF tokens to your forms, and
+check submitted forms for the presence of these tokens. CSRF attacks occur when an attacker tricks a victim into
+performing an action that the victim didn't intend to do.
+<h2>
+    3. Prevent SQL Injection:
+</h2>
+<p>
+    If you use SQLAlchemy or another ORM (Object-Relational Mapping) with Flask, it will protect you from SQL injection
+    as
+    long as you use their query APIs correctly and don't concatenate user input directly into your SQL statements.
+</p>
+
+<h2>4. Use HTTPS:</h2>
+<p>
+    Always use HTTPS instead of HTTP for your website. HTTPS encrypts traffic between the server and the client, which
+    helps
+    protect against many types of attacks.
+</p>
+
+<h2>5. Secure User Passwords:</h2>
+<p>
+    Always hash and salt passwords, and consider adding a slow down function. Werkzeug, a package used by Flask,
+    provides
+    tools for password hashing. Don't store plain text passwords.
+</p>
+
+<h2>
+    6. Session Protection:
+</h2>
+<p>
+    Flask-Login provides session protection out of the box. It protects against stolen user cookies by assigning a new
+    session ID to users when they log in.
+</p>
+
+<h2>
+    7. Limiting Uploads:
+</h2>
+<p>
+    Limit file uploads by size and type to prevent someone from uploading a malicious file to your server.
+</p>
+<h2>
+    8. Input Validation:
+</h2>
+<p>
+    Always validate and sanitize any user input before using it. Never trust user input.
+</p>
+<h2>
+    9. Content Security Policy (CSP):
+</h2>
+<p>
+    Implement a strict CSP. This will help prevent a wide range of attacks, including XSS and other code injection
+    attacks.
+</p>
+<br>
+<p>
+    Remember that web security is a complex field and this list is not exhaustive. You should always keep abreast of the
+    latest threats and how to protect against them. Consider consulting with a security expert or firm if you're not
+    confident in your ability to secure your site on your own.
+</p>
+<br>
+{% endblock %}
