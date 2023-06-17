@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 user = os.getenv("DB_USER")
 passw = os.getenv("DB_PASS")
+
 # Connect to your MongoDB database
 client = MongoClient(
     f"mongodb+srv://{user}:{passw}@clusterprofile.v0bdrot.mongodb.net/"
