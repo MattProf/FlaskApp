@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for url in urls %}
+    <url>
+        <loc>{{ url }}</loc>
+        <br>
+        <lastmod>{{ '2023-06-16' }}</lastmod>  <!-- Replace with the date of last modification if available -->
+        <br>
+        <changefreq>monthly</changefreq>  <!-- This can be 'always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never' -->
+        <br>
+        <priority>0.8</priority>  <!-- This value lies between 0.0 to 1.0 -->
+    </url>
+    <hr>
+    {% endfor %}
+</urlset>

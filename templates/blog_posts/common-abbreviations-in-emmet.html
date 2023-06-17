@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+what are some common abreviations for Emmet?
+
+Emmet is a fantastic tool integrated into VS Code that allows you to write HTML and CSS faster with the use of
+abbreviations. Here are some of the most common and useful Emmet abbreviations for HTML:
+
+1. **Child `>`**: `nav>ul>li`
+- Expands to:
+```html
+<nav>
+    <ul>
+        <li></li>
+    </ul>
+</nav>
+```
+
+2. **Sibling `+`**: `div+p+bq`
+- Expands to:
+```html
+<div></div>
+<p></p>
+<blockquote></blockquote>
+```
+
+3. **Climb-up `^`**: `div+div>p>span+em^bq`
+- Expands to:
+```html
+<div></div>
+<div>
+    <p><span></span><em></em></p>
+    <blockquote></blockquote>
+</div>
+```
+
+4. **Multiplication `*`**: `ul>li*5`
+- Expands to:
+```html
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+```
+
+5. **Grouping `()`**: `div>(header>ul>li*2>a)+footer>p`
+- Expands to:
+```html
+<div>
+    <header>
+        <ul>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+        </ul>
+    </header>
+    <footer>
+        <p></p>
+    </footer>
+</div>
+```
+
+6. **ID and CLASS attributes**:
+- `#header` -> `<div id="header"></div>`
+- `.title` -> `<div class="title"></div>`
+- `p#header.title` -> `<p id="header" class="title"></p>`
+
+7. **Custom attributes**: `p[title="Hello world"]`
+- Expands to:
+```html
+<p title="Hello world"></p>
+```
+
+8. **Text `{}`**: `a{Click me}`
+- Expands to:
+```html
+<a href="">Click me</a>
+```
+
+These are just a few examples. Emmet is powerful and flexible, and you can create complex templates with these
+abbreviations.
+{% endblock %}
