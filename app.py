@@ -71,6 +71,11 @@ def product_list():
     return render_template("products.html", products=products)
 
 
+@app.route("/reporting")
+def reporting():
+    return render_template("reporting.html")
+
+
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
     if request.method == "POST":
