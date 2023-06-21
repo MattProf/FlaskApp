@@ -13,6 +13,7 @@
     <title>{% block title %}{% endblock %}</title>
     <script> dataLayer = []; </script>
     {% import 'tag_manager.html' as tag_manager %}
+    {{ tag_manager.consent() }}
     {{ tag_manager.tag_manager_function() }}
 </head>
 
@@ -61,6 +62,8 @@
             });
         });
     </script>
+    {% import 'consent.html' as consent %}
+    {{ consent.consent_bar() }}
     {% block scripts %}
     {% endblock %}
     <script>
