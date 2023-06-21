@@ -1,100 +1,56 @@
 {% extends 'base.html' %}
-
+{% block title %}
+Home
+{% endblock %}
 {% block content %}
-<h1>Welcome to Home Page</h1>
+<h1>Welcome to my Home Page</h1>
 <p>This is the home page of my simple Flask app.</p>
 
+{% import 'macros/card_component.html' as card_component %}
+{{ card_component.generate_card_component(
+image_path="/static/images/storefront.png",
+alt_image="storefront",
+link="blog/e-commerce",
+title="E-Commerce",
+text="This covers the fundamental user stories for an e-commerce website from both
+customer
+and admin perspectives."
+) }}
 
-<div class="card mb-3" style="max-width: 540px;">
+{{ card_component.generate_card_component(
+image_path="/static/images/book.png",
+alt_image="book",
+link="blog/blog-site",
+title="Blogs",
+text="This covers the fundamental user stories for an blog website from a reader, author,
+and admin perspectives."
+) }}
 
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="/static/images/storefront.png" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <a href="blog/e-commerce" class="">
-                    <h5 class="card-title">E-Commerce</h5>
-                </a>
-                <p class="card-text">This covers the fundamental user stories for an e-commerce website from both
-                    customer
-                    and admin perspectives.</p>
-                <p class="card-text"><small class="text-body-secondary">Last updated x mins ago</small></p>
-            </div>
-        </div>
-    </div>
+{{ card_component.generate_card_component(
+image_path="/static/images/noticeboard.png",
+alt_image="noticeboard",
+link="blog/forum-site",
+title="Forums",
+text="This covers the fundamental user stories for an forum website from both
+user and moderator/admin perspectives."
+) }}
 
+{{ card_component.generate_card_component(
+image_path="/static/images/support.png",
+alt_image="support",
+link="blog/help-desk-site",
+title="Help Desk",
+text="This covers the fundamental user stories for an help desk website from a customer,
+help desk agent, and manager/admin perspectives."
+) }}
 
+{{ card_component.generate_card_component(
+image_path="/static/images/money_bag.png",
+alt_image="money_bag",
+link="blog/service-signup-site",
+title="Service Sign-up",
+text="This covers the fundamental user stories for an service sign-up website from a
+visitor, potential customer, customer, and admin perspectives."
+) }}
 
-</div>
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="/static/images/book.png" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <a href="blog/blog-site" class="">
-                    <h5 class="card-title">Blogs</h5>
-                </a>
-                <p class="card-text">This covers the fundamental user stories for an blog website from a reader, author,
-                    and admin perspectives.</p>
-                <p class="card-text"><small class="text-body-secondary">Last updated x mins ago</small></p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="/static/images/noticeboard.png" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <a href="blog/forum-site" class="">
-                    <h5 class="card-title">Forums</h5>
-                </a>
-
-                <p class="card-text">This covers the fundamental user stories for an forum website from both
-                    user and moderator/admin perspectives.</p>
-                <p class="card-text"><small class="text-body-secondary">Last updated x mins ago</small></p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="/static/images/support.png" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <a href="blog/help-desk-site" class="">
-                    <h5 class="card-title">Help Desk</h5>
-                </a>
-
-                <p class="card-text">This covers the fundamental user stories for an help desk website from a customer,
-                    help desk agent, and manager/admin perspectives.</p>
-                <p class="card-text"><small class="text-body-secondary">Last updated x mins ago</small></p>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="/static/images/money_bag.png" class="img-fluid rounded-start" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <a href="blog/help-desk-site" class="">
-                    <h5 class="card-title">Service Sign-up</h5>
-                </a>
-                <p class="card-text">This covers the fundamental user stories for an service sign-up website from a
-                    visitor, potential customer, customer, and admin perspectives.</p>
-                <p class="card-text"><small class="text-body-secondary">Last updated x mins ago</small></p>
-            </div>
-        </div>
-    </div>
-</div>
 {% endblock %}

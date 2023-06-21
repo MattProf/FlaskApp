@@ -24,3 +24,14 @@ ul {
     text-align: center;
     padding: 10px;
 }
+#search-box {
+    position: relative;
+}
+
+#search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%; /* Set the width as required */
+    z-index: 1; /* To ensure the search results appear above other content */
+}
