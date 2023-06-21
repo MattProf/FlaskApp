@@ -1,12 +1,14 @@
 import os
-from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template, request, redirect, session, url_for, jsonify
 from pymongo import MongoClient
 import uuid
 from dotenv import load_dotenv
+from python.find_html_files import search_files
 
 load_dotenv()
 user = os.getenv("DB_USER")
 passw = os.getenv("DB_PASS")
+secretkey = os.getenv("DB_SECRET")
 
 # Connect to your MongoDB database
 client = MongoClient(
@@ -18,8 +20,7 @@ collection = db["products"]  # Use your own collection name
 
 
 app = Flask(__name__)
-# app.secret_key = "super secret key"  # change this to your own secret key
-app.config["SECRET_KEY"] = "your-secret-key"
+app.config["SECRET_KEY"] = secretkey
 
 
 def cart_count():
@@ -48,13 +49,32 @@ def contact():
 @app.route("/search", methods=["POST"])
 def search():
     search_term = request.form.get("search")
-    # You can use search_term to perform a site-wide search.
-    # For now, let's just redirect back to the home page.
-    return redirect("/")
+    print(search_term)
+    # Perform a text search on the 'name' field
+    products = db.products.find({"$text": {"$search": search_term}})
+
+    # Convert the results to a list
+    product_list = list(products)
+    print(product_list)
+    # Render the results in a template
+    return render_template("macros/search_results.html", products=product_list)
+
+
+@app.route("/api/search")
+def api_search():
+    query = request.args.get("query")
+    results = collection.find({"$text": {"$search": query}})
+    results = [
+        {"id": str(r["_id"]), "name": r["name"], "price": r["price"]} for r in results
+    ]
+    return jsonify(results)
 
 
 @app.route("/blog")
 def blog():
+    html_files = search_files(base_path="./templates/blog_posts")
+    for file in html_files:
+        print(file)
     return render_template("blog.html")
 
 
@@ -254,15 +274,7 @@ def thank_you():
 
 @app.route("/sitemap", methods=["GET"])
 def sitemap():
-    directory = os.path.abspath("./templates")
-    html_files = []
-    for subdir, dirs, files in os.walk(directory):
-        for file in files:
-            if file.endswith(".html"):
-                file_path = os.path.join(subdir, file)
-                relative_path = os.path.relpath(file_path, directory)
-                relative_path = relative_path.replace("\\", "/")
-                html_files.append(relative_path)
+    html_files = search_files()
 
     urls = [f"http://127.0.0.1:5000/{os.path.splitext(html)[0]}" for html in html_files]
 
