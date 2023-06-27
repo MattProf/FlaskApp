@@ -101,6 +101,11 @@ def reporting():
     return render_template("reporting.html")
 
 
+@app.route("/linkedin")
+def linkedin():
+    return render_template("linkedin.html")
+
+
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
     on = False
