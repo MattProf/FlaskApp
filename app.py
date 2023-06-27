@@ -110,6 +110,8 @@ def add_product():
                 # "_id": request.form.get("id"),
                 "name": request.form.get("name"),
                 "price": float(request.form.get("price")),
+                "pokedex_number": float(request.form.get("pokedex_number")),
+                "image": request.form.get("image"),
             }
             try:
                 collection.insert_one(product)
