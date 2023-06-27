@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Svelte-app
+{% endblock %}
+{% block style %}
+<link rel='stylesheet' href='{{ url_for("static", filename="bundle.css") }}'>
+{% endblock %}
+{% block content %}
+
+{% endblock %}
+
+{% block scripts %}
+<script src='{{ url_for("static", filename="bundle.js") }}'></script>
+{% endblock %}

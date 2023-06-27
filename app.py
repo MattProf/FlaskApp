@@ -46,6 +46,11 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/svelteapp")
+def svelte_app():
+    return render_template("svelte_app.html")
+
+
 @app.route("/search", methods=["POST"])
 def search():
     search_term = request.form.get("search")
@@ -98,17 +103,22 @@ def reporting():
 
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
+    on = False
     if request.method == "POST":
-        product = {
-            # "_id": request.form.get("id"),
-            "name": request.form.get("name"),
-            "price": float(request.form.get("price")),
-        }
-        try:
-            collection.insert_one(product)
+        if on == True:
+            product = {
+                # "_id": request.form.get("id"),
+                "name": request.form.get("name"),
+                "price": float(request.form.get("price")),
+            }
+            try:
+                collection.insert_one(product)
+                return redirect(url_for("product_list"))
+            except:
+                return "Error: Product with this ID already exists!"
+        else:
             return redirect(url_for("product_list"))
-        except:
-            return "Error: Product with this ID already exists!"
+
     return render_template("add_product.html")
 
 
@@ -282,4 +292,4 @@ def sitemap():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
