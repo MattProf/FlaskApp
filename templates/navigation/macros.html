@@ -1,48 +1,52 @@
 {% macro navbar(links, brand_name="My Flask App", brand_url="/") %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ brand_url }}">{{ brand_name }}</a>
+        <a class="navbar-brand" href="/">
+            <img src="/static/images/adventure.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
 
-    <a class="navbar-brand" href="{{ brand_url }}">{{ brand_name }}</a>
-    <a class="navbar-brand" href="/">
-        <img src="/static/images/adventure.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+        </a>
 
-    </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% for link in links %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ link.url }}">{{ link.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            {% for link in links %}
-            <li class="nav-item">
-                <a class="nav-link" href="{{ link.url }}">{{ link.name }}</a>
-            </li>
-            {% endfor %}
-        </ul>
+            <div class="ml-auto">
+                <a href="{{ url_for('cart') }}">
+                    {% if cart_count() > 0 %}
+                    <img src="{{ url_for('static', filename='images/cart_full.png') }}" alt="Cart"
+                        class="custom-img-size">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='images/cart_empty.png') }}" alt="Cart"
+                        class="custom-img-size">
+                    {% endif %}
+                    ({{ cart_count() }})
+                </a>
+            </div>
+            <div class="ml-2" id="search-box">
+                <form class="form-inline" id="search-bar" action="/search" method="post">
+                    <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search"
+                        name="search" id="search-input">
+                </form>
+                <div id="search-results" style="background-color: white;"></div>
+            </div>
+            <div class="form-check form-switch ml-1">
+                <input class="form-check-input" type="checkbox" role="switch" id="themeSwitch">
+                <label class="form-check-label" for="themeSwitch">Theme</label>
+            </div>
 
-        <div class="ml-auto">
-            <a href="{{ url_for('cart') }}">
-                {% if cart_count() > 0 %}
-                <img src="{{ url_for('static', filename='images/cart_full.png') }}" alt="Cart" class="custom-img-size">
-                {% else %}
-                <img src="{{ url_for('static', filename='images/cart_empty.png') }}" alt="Cart" class="custom-img-size">
-                {% endif %}
-                ({{ cart_count() }})
-            </a>
         </div>
-        <div class="ml-2" id="search-box">
-            <form class="form-inline" id="search-bar" action="/search" method="post">
-                <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search" name="search"
-                    id="search-input">
-            </form>
-            <div id="search-results" style="background-color: white;"></div>
-        </div>
-        <div class="form-check form-switch ml-1">
-            <input class="form-check-input" type="checkbox" role="switch" id="themeSwitch">
-            <label class="form-check-label" for="themeSwitch">Theme</label>
-        </div>
-
     </div>
+
 </nav>
 
 {% endmacro %}
