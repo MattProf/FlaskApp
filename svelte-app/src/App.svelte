@@ -23,14 +23,28 @@
 <div class="chat-window {isChatOpen ? '' : 'hidden'}">
     <div class="chat-messages">
         {#each messages as message (message.timestamp)}
-            <div class="message">
-                <p>{message.text}</p>
-                <small>{message.timestamp}</small>
+            <div class="card m-1">
+                <div class="row g-0">
+                    <div class="card-body">
+                        <div class="col-10">
+                            <p class="mb-0">{message.text}</p>
+                            <small>{message.timestamp}</small>
+                        </div>
+                        <div class="position-absolute top-0 end-0 m-1">
+                            <img
+                                src="/static/images/comments.png"
+                                class="img-fluid rounded"
+                                alt="..."
+                                style="max-width: 30px; max-height: 30px;"
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         {/each}
     </div>
     <div class="chat-input">
-        <input
+        <textarea
             type="text"
             bind:value={input}
             on:keyup={(e) => e.key === "Enter" && submitMessage()}
@@ -88,7 +102,7 @@
     }
 
     .message {
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #000000;
         padding: 10px;
     }
 </style>
