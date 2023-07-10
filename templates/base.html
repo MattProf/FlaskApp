@@ -28,6 +28,7 @@
     {'name': 'Blog', 'url': '/blog'},
     {'name': 'Products', 'url': '/products'},
     {'name': 'Reporting', 'url': '/reporting'},
+    {'name': 'Admin', 'url': '/admin'},
     ]) }}
     <div class="container">
         <div class="row">
@@ -100,8 +101,7 @@
         const lightThemeStyle = `
             body {
                 background-color: #fff;
-                color: #212529;
-            }
+                color: #212529;}
             .card {
                 background-color: #fff;
                 color: #212529;
@@ -117,7 +117,7 @@
         });
     </script>
     <script src='{{ url_for("static", filename="bundle.js") }}'></script>
-    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script src="{{ url_for('static', filename='chatbot.js') }}"></script>
 </body>
 
 </html>

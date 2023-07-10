@@ -106,6 +106,11 @@ def linkedin():
     return render_template("linkedin.html")
 
 
+@app.route("/admin")
+def admin():
+    return render_template("admin.html")
+
+
 @app.route("/add_product", methods=["GET", "POST"])
 def add_product():
     on = False
@@ -299,4 +304,4 @@ def sitemap():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)

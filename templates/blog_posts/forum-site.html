@@ -2,6 +2,9 @@
 {% block title %}
 Forum User Stories
 {% endblock %}
+{% block style %}
+
+{% endblock %}
 {% block content %}
 <h1>
     What are the major user stories in a forum website?
@@ -17,13 +20,13 @@ Forum User Stories
 
 </h2>
 <ul>
-    <li> <input class="form-check-input" type="checkbox" value="" id="userStory1" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="userStory1" disabled>
         <label for="userStory1">
             As a user, I want to register and create an account so that I can participate in discussions.
 
         </label>
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="userStory2" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="userStory2" disabled>
         <label for="userStory2">
             As a user, I want to log in to my account so that I can post questions, reply to discussions, and
             personalize my
@@ -31,26 +34,26 @@ Forum User Stories
         </label>
 
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="userStory3" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="userStory3" disabled>
         <label for="userStory3">
             As a user, I want to browse through different categories and threads so that I can find topics that interest
             me.
 
         </label>
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="userStory4" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="userStory4" disabled>
         <label for="userStory4">
             As a user, I want to start a new thread so that I can initiate a discussion on a specific topic.
 
         </label>
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="userStory5" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="userStory5" disabled>
         <label for="userStory5">
             As a user, I want to reply to a thread so that I can participate in a discussion or provide information.
 
         </label>
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="userStory6" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="userStory6" disabled>
         <label for="userStory6">
             As a user, I want to quote or mention other users in my posts so that I can directly respond to or reference
             their
@@ -58,7 +61,7 @@ Forum User Stories
         </label>
 
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="userStory7" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="userStory7" disabled>
         <label for="userStory7">
             As a user, I want to upvote or downvote posts so that I can express my opinion about the quality or
             relevance of
@@ -67,7 +70,7 @@ Forum User Stories
         </label>
 
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="userStory8" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="userStory8" disabled>
         <label for="userStory8">
             As a user, I want to receive notifications when someone replies to my thread or post so that I can stay
             updated
@@ -75,13 +78,13 @@ Forum User Stories
         </label>
 
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="userStory9" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="userStory9" disabled>
         <label for="userStory9">
             As a user, I want to private message other users so that I can communicate with them directly.
 
         </label>
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="userStory10" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="userStory10" disabled>
         <label for="userStory10">
             As a user, I want to report posts or users that violate the forum rules so that the forum remains a safe and
             respectful place.
@@ -98,7 +101,7 @@ Forum User Stories
     For a forum moderator/admin:
 </h2>
 <ul>
-    <li> <input class="form-check-input" type="checkbox" value="" id="moderatorStory1" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="moderatorStory1" disabled>
         <label for="moderatorStory1">
             As a moderator, I want to review and approve new threads or posts so that I can maintain the quality of
             content
@@ -107,7 +110,7 @@ Forum User Stories
         </label>
 
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="moderatorStory2" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="moderatorStory2" disabled>
         <label for="moderatorStory2">
             As a moderator, I want to manage (edit, move, pin, close, delete) threads and posts so that I can organize
             the
@@ -116,7 +119,7 @@ Forum User Stories
         </label>
 
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="moderatorStory3" disabled>
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="moderatorStory3" disabled>
         <label for="moderatorStory3">
             As a moderator, I want to manage user accounts (warn, ban, modify roles) so that I can maintain order and
             safety
@@ -125,18 +128,18 @@ Forum User Stories
         </label>
 
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="moderatorStory4" disabled>
-        <label for="moderatorStory4">
-            As an admin, I want to create, edit, or delete categories and sub-forums so that I can structure the forum
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="moderatorStory4" disabled>
+        <label for="moderatorStory4">As an admin, I want to create, edit, or delete categories and sub-forums so that I
+            can structure the forum
             based
             on the
             needs of the community.
         </label>
 
     </li>
-    <li> <input class="form-check-input" type="checkbox" value="" id="moderatorStory5" disabled>
-        <label for="moderatorStory5">
-            As an admin, I want to manage the forum's settings (permissions, layout, features) so that I can customize
+    <li class="form-check"> <input class="form-check-input" type="checkbox" value="" id="moderatorStory5" disabled>
+        <label for="moderatorStory5">As an admin, I want to manage the forum's settings (permissions, layout, features)
+            so that I can customize
             the
             forum to
             best serve the community.
