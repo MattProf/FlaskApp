@@ -100,8 +100,8 @@
     .hidden {
         display: none;
     }
-
-    /* .message {
+    /* 
+    .message {
         border-bottom: 1px solid #000000;
         padding: 10px;
     } */
