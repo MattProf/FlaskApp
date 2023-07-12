@@ -9,6 +9,7 @@
 
 <div>
     <h2>Manage Products</h2>
+    <p>This is the Product Manager page</p>
     {#each products as product (product.id)}
         <div class="product">
             <p>{product.name}</p>
